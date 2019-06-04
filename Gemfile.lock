@@ -1,6 +1,8 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    byebug (11.0.1)
+    database_cleaner (1.7.0)
     diff-lcs (1.2.5)
     rspec (3.1.0)
       rspec-core (~> 3.1.0)
@@ -19,4 +21,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  byebug
+  database_cleaner
   rspec
+
+BUNDLED WITH
+   2.0.1
