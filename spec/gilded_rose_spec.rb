@@ -6,6 +6,7 @@ describe "#update_quality" do
   let(:aged_brie) { Item.new('Aged Brie', 5, 10) }
   let(:sulfuras) { Item.new('Sulfuras, Hand of Ragnaros', 5, 10) }
   let(:backstage) { Item.new('Backstage passes to a TAFKAL80ETC concert', 10, 10) }
+  let(:conjured) { Item.new('Conjured', 5, 20)}
 
   context "with single item" do
 
@@ -32,32 +33,17 @@ describe "#update_quality" do
       let(:items){ [item] }
       include_examples :backstage_passes_item
     end
+
+    context "with Conjured item" do
+      let(:item) { conjured }
+      let(:items){ [item] }
+      include_examples :conjured_item
+    end
   end
-
-  # context "with Conjured item" do
-  #   let(:item) { Item.new('Conjured', 5, 20) }
-  #
-  #   context 'in concert' do
-  #     it 'degrades in quality twice as fast as normal items ' do
-  #       4.times { update_quality([item]) }
-  #       expect(item.sell_in).to eq(1)
-  #       expect(item.quality).to eq(12)
-  #     end
-  #   end
-  #
-  #   context 'out concert' do
-  #     it 'degrades in quality twice as fast as normal items ' do
-  #       6.times { update_quality([item]) }
-  #       expect(item.sell_in).to eq(-1)
-  #       expect(item.quality).to eq(6)
-  #     end
-  #   end
-  # end
-
 
   context "with multiple items" do
     let(:items) {
-      [normal, aged_brie, sulfuras, backstage]
+      [normal, aged_brie, sulfuras, backstage, conjured]
     }
 
     context "with a normal item" do
@@ -80,5 +66,9 @@ describe "#update_quality" do
       include_examples :backstage_passes_item
     end
 
+    context "with Conjured item" do
+      let(:item) { conjured }
+      include_examples :conjured_item
+    end
   end
 end
