@@ -1,3 +1,6 @@
+# Isolating code (policy - how to calculate quality for each item). If we want to add new policy:
+# - adding new class and inherits Base.
+# - override update method.
 module Policies
   class Base
     MIN_QUALITY = 0
@@ -71,9 +74,11 @@ module Policies
 
   class Conjured < Base
     def update
-      # degrade in quality twice as fast as normal items
+      # Degrade in quality twice as fast as normal items
       @quality = update_quality( -2, -4)
       valid_quality? ? quality : MIN_QUALITY
     end
   end
 end
+# By adding new class which inherits Base class and implementing update method we make sure that we donn't make
+# impacts on legacy code (other items). This also DUCK TYPING pattern.

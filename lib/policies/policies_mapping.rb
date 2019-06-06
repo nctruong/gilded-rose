@@ -1,4 +1,5 @@
-# This class defined how we apply specific policy to specific item based on name or whatever we want
+# This class defined how we apply specific policy to specific item based on name or whatever we want. This class
+# would be injected into update_quality method. In future, feel free to define another Mapping class if we want.
 class PoliciesMapping
   class << self
     NAME_MAPPING = {
